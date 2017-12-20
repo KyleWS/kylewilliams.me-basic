@@ -1,0 +1,24 @@
+{
+  "name": "basic-frontend",
+  "version": "1.0.0",
+  "description": "front end to work with a blog api",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KyleWS/kylewilliams.me-basic.git"
+  },
+  "author": "Kyle WS",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KyleWS/kylewilliams.me-basic/issues"
+  },
+  "homepage": "https://github.com/KyleWS/kylewilliams.me-basic#readme",
+  "dependencies": {
+    "jquery": "^3.2.1",
+    "moment": "^2.20.1",
+    "quill": "^1.3.4"
+  }
+}
