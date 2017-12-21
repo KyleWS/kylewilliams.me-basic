@@ -1,18 +1,26 @@
 <!DOCTYPE html>
 <html>
    <head>
-      <title>By Kyle Williams-Smith</title>
+      <title>Posts by Kyle Ian</title>
       <link type="text/css" rel="stylesheet" href="css/main.css" />
       <link type="text/css" rel="stylesheet" href="node_modules/quill/dist/quill.snow.css" />
    </head>
    <body>
-      <h1>Development time</h1>
-      <marquee id="time">Time Goes Here</marquee>
-      <div id="toolbar"></div>
-      <div id="editor"></div>
+      <div id="left-pane">
+         <div class="left-pane-item" id="home">home</div>
+         <div class="left-pane-item" id="about">about</div>
+         <div class="left-pane-item" id="search">search</div>
+         <div class="left-pane-item" id="tags">tags</div>
+         <div class="left-pane-item" id="top">top</div>
+      </div>
+      <div id="posts-pane">
+         <!-- Render "all posts" inside here -->
+      </div>
+      <button id="login">login</button>
       <script src="node_modules/jquery/dist/jquery.min.js"></script>
       <script src="node_modules/moment/moment.js"></script>
       <script src="node_modules/quill/dist/quill.js"></script>
+      <script src="js/constants.js"></script>
       <script src="js/main.js"></script>
    </body>
 </html>
