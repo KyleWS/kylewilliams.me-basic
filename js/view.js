@@ -14,10 +14,23 @@
       }).then(function(data, status, xhr) {
          load(JSON.parse(data));
       });
+
+      if (localStorage.getItem(has_auth) != null) {
+         $("<div>", {id: "delete"}).text("Delete").click(function() {
+            if(confirm("Are you sure you want to delete this post? It is permanent.")) {
+               $.ajax({
+                  url: API_ADDRESS + "/post/" + post,
+                  type: "DELETE",
+                  headers: {"Authorization": localStorage.getItem(has_auth)},
+               }).then(function(data, status, xhr) {
+                  window.location = "../main.html";
+               });
+            }
+         }).appendTo("#delete-box");
+      }
    }
 
    function load(jsonData) {
-      console.log(jsonData);
       let content = $("<div>", {
          id: "frame"
       }).appendTo("#view-post");

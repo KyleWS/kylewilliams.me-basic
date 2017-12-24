@@ -1,7 +1,10 @@
 # Planned Features
--- Mobile friendsly viewing
+-- Mobile friendly viewing
+-- Enable caching of posts so if the post fails you dont lose everything you typed
+-- Database/Log backups stored offsite
 -- View count
 -- Only show 'published' posts
+-- Use Quill API for rendering and saving posts, not my homebaked method.
 -- Email subscription
 -- Integrate react based front-end
 -- Small websocket game

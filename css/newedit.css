@@ -1,0 +1,11 @@
+#error {
+   font-size: 14pt;
+   color: red;
+   background-color: pink;
+}
+
+#success {
+   font-size: 14pt;
+   color: darkgreen;
+   background-color: lightgreen;
+}

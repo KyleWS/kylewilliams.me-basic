@@ -1,0 +1,11 @@
+#delete {
+   color: red;
+   background-color: black;
+   font-size: 20pt;
+   border: 2px solid red;
+   display: inline-block;
+}
+
+#delete:hover {
+   background-color: grey;
+}
