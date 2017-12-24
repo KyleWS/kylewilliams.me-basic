@@ -1,0 +1,10 @@
+# Planned Features
+-- Mobile friendsly viewing
+-- View count
+-- Only show 'published' posts
+-- Email subscription
+-- Integrate react based front-end
+-- Small websocket game
+-- Host email server (will just create a gmail in the meantime)
+-- Commenting on posts
+-- MAYBE: Instead of switching views entirely from main to a single post, just use the same div and switch the contents out based on the viewing type that is happening
