@@ -27,7 +27,14 @@
                });
             }
          }).appendTo("#delete-box");
+         $("<button>").text("edit post").click(function() {
+            window.location = "./newedit.html";
+         }).appendTo($("#admin-controls"));
       }
+
+      $("home").click(function() {
+         window.location = "../main.html";
+      });
    }
 
    function load(jsonData) {

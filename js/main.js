@@ -32,26 +32,36 @@
 
    // functions
    function insertPosts(jsonData) {
+      var postNum = jsonData.length;
       jsonData.forEach(function(singlePost) {
+         let postContainer = $("<div>", {"class": "container"});
+         $("<div>", {"class": "post-bullet"}).append(
+            $("<div>", {"class": "post-number"}).text(postNum),
+            $("<i>", {"class": "fa fa-cube"})
+         ).appendTo(postContainer);
+
          let entry = $("<div>", {
             "class": "entry",
             id: singlePost.id
-         }).click(function() {
-            view(singlePost.id);
          });
-         $("<div>", {"class": "title"}).text(singlePost.title).appendTo(entry);
+         $("<div>", {"class": "title"}).text(singlePost.title).click(function() {
+            view(singlePost.id);
+         }).appendTo(entry);
          $("<div>", {"class": "created"}).text(moment(singlePost.created).fromNow()).appendTo(entry);
          $("<div>", {"class": "tags"}).text(singlePost.tags).appendTo(entry);
+         postContainer.append(entry);
          // admin only fields
          if (localStorage.getItem(has_auth)) {
-            $("<div>", {"class": "draftmode"}).text(singlePost.draftmode).appendTo(entry);
+            //$("<div>", {"class": "draftmode"}).text(singlePost.draftmode).appendTo(entry);
             //$("<div.views>").text(singlePost.views).appendTo(entry);
-            $("<div>", {"class": "publish"}).text(singlePost.publish).appendTo(entry);
+            //$("<div>", {"class": "publish"}).text(singlePost.publish).appendTo(entry);
             $("<div>", {"class": "edit"}).text("edit").click(function() {
                edit(singlePost.id);
-            }).appendTo(entry);
+            }).appendTo(postContainer);
          }
-         $("#posts-pane").prepend(entry);
+
+         $("#posts-pane").prepend(postContainer);
+         postNum--;
       });
    }
 

@@ -1,7 +1,7 @@
 body {
    padding: 0px;
    margin: 0px;
-   font-size: 24pt;
+   font-size: 36pt;
    display: block;
 }
 
@@ -13,21 +13,32 @@ body {
 
 .nav-pane-item {
    padding-left: 10px;
-   margin: 2px;
    display: inline-block;
 }
 
+.nav-pane-item:hover {
+   text-decoration: underline;
+}
+
 .entry {
-   margin-bottom: 10px;
+   margin-bottom: 20px;
 }
 
 .title {
    font-family: arial, sans-serif;
+   cursor: pointer;
+}
+
+.title:hover {
+   text-decoration: underline;
+}
+
+.created, .tags {
+   font-size: 24pt;
 }
 
 .created {
    color: grey;
-   font-size: 12pt;
 }
 
 .draftmode, .publish {
@@ -35,10 +46,48 @@ body {
 }
 
 .tags {
-   font-size: 12pt;
-   color: lightblue;
+   color: orange;
+}
+
+.container {
+   display: flex;
+}
+
+.post-number {
+   display: inline-block;
+   margin-right: 10px;
+}
+
+.fa-cube {
+   color: grey;
+}
+
+.entry {
+   margin-left: 20px;
+}
+
+.edit {
+   border: 2px solid red;
+   border-radius: 20px;
+   position: absolute;
+   right: 20px;
+   padding: 10px;
+}
+
+.edit:hover {
+   background-color: grey;
 }
 
 #posts-pane {
    padding: 10px;
+}
+
+@media (min-width: 780px) {
+   body {
+      font-size: 16pt;
+   }
+
+   .created, .tags {
+      font-size: 12pt;
+   }
 }

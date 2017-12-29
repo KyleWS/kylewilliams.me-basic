@@ -87,9 +87,7 @@
    // fields that can be updated
    // title publish, draftmode, body, tags
    function submitEditPost(id) {
-      console.log("I ran");
       if(minimumLengthCheck()) {
-         console.log("i ran")
          let tagsList = $("#tags").val().split(",");
          let editPostJson = {
             author: "KyleWS", // hard coding until users are more adequately integrated
@@ -98,21 +96,21 @@
             body: $(".ql-editor").html(),
             tags: tagsList
          }
-         console.log(editPostJson);
-         $.ajax({
-            url: API_ADDRESS + "/post/" + id,
-            type: "PATCH",
-            headers: {"Authorization": localStorage.getItem(has_auth)},
-            dataType: "json",
-            data: JSON.stringify(editPostJson)
-         }).then(function(data, status, xhr) {
-            if (status == "success") {
-               $("#success").text(JSON.stringify(data));
-            }
-         }).catch(function(data) {
-            console.log(data);
-            $("#error").text(data.response);
-         });
+         if(confirm("updating is permanent, are you sure you want to continue?")) {
+            $.ajax({
+               url: API_ADDRESS + "/post/" + id,
+               type: "PATCH",
+               headers: {"Authorization": localStorage.getItem(has_auth)},
+               dataType: "json",
+               data: JSON.stringify(editPostJson)
+            }).then(function(data, status, xhr) {
+               if (status == "success") {
+                  $("#success").text(JSON.stringify(data));
+               }
+            }).catch(function(data) {
+               $("#error").text(data.response);
+            });
+         }
       }
    }
 

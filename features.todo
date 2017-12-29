@@ -3,6 +3,7 @@
 -- Enable caching of posts so if the post fails you dont lose everything you typed
 -- Database/Log backups stored offsite
 -- View count
+-- Have special icons on the post bullets depending on the type of post. Some ideas: exclamation for a meta-update, cube for conceptual, space needle for seattle, and so on. It could be hard to narow down just how many categories are enough. idk it would be cool.
 -- Only show 'published' posts
 -- Use Quill API for rendering and saving posts, not my homebaked method.
 -- Email subscription
