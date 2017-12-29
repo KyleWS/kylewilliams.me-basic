@@ -32,7 +32,7 @@
 
       $("#submit").click(function() {
          if (post != null) {
-            submitEditPost();
+            submitEditPost(post);
          } else {
             submitNewPost();
          }
@@ -57,6 +57,66 @@
    // Fields that can be submitted by user for new post
    // author, title, publish, draftmode, body, tags
    function submitNewPost() {
+      if(minimumLengthCheck()) {
+         let tagsList = $("#tags").val().split(",");
+         let newPostJson = {
+            author: "KyleWS", // hard coding until users are more adequately integrated
+            title: $("#title").val(),
+            draftmode: $("#draft")[0].checked,
+            body: $(".ql-editor").html(),
+            tags: tagsList
+         }
+
+         $.ajax({
+            url: API_ADDRESS + "/post/",
+            type: "POST",
+            headers: {"Authorization": localStorage.getItem(has_auth)},
+            dataType: "json",
+            data: JSON.stringify(newPostJson)
+         }).then(function(data, status, xhr) {
+            if (status == "success") {
+               $("#success").text(JSON.stringify(data));
+            }
+         }).catch(function(data) {
+            console.log(data);
+            $("#error").text(data.response);
+         });
+      }
+   }
+
+   // fields that can be updated
+   // title publish, draftmode, body, tags
+   function submitEditPost(id) {
+      console.log("I ran");
+      if(minimumLengthCheck()) {
+         console.log("i ran")
+         let tagsList = $("#tags").val().split(",");
+         let editPostJson = {
+            author: "KyleWS", // hard coding until users are more adequately integrated
+            title: $("#title").val(),
+            draftmode: $("#draft")[0].checked,
+            body: $(".ql-editor").html(),
+            tags: tagsList
+         }
+         console.log(editPostJson);
+         $.ajax({
+            url: API_ADDRESS + "/post/" + id,
+            type: "PATCH",
+            headers: {"Authorization": localStorage.getItem(has_auth)},
+            dataType: "json",
+            data: JSON.stringify(editPostJson)
+         }).then(function(data, status, xhr) {
+            if (status == "success") {
+               $("#success").text(JSON.stringify(data));
+            }
+         }).catch(function(data) {
+            console.log(data);
+            $("#error").text(data.response);
+         });
+      }
+   }
+
+   function minimumLengthCheck() {
       let titleInput = $("#title").val();
       let bodyInput = $(".ql-editor").html();
 
@@ -64,42 +124,15 @@
          $("#error").text("WARNING: Override enabled");
       } else if (titleInput.length < 5) {
          $("#error").text("Title is too short. Must be at least 5 characters OR provide override");
-         return;
+         return false;
       }
       if (localStorage.getItem("OVERRIDE_BODY_LENGTH")) {
          $("#error").text("WARNING: Override enabled");
       } else if (bodyInput.length < 100) {
          $("#error").text("Body is too short. Must be at least 100 characters OR provide override");
-         return;
+         return false;
       }
-      let tagsList = $("#tags").val().split(",");
-      let newPostJson = {
-         author: "KyleWS", // hard coding until users are more adequately integrated
-         title: titleInput,
-         draftmode: $("#draft")[0].checked,
-         body: bodyInput,
-         tags: tagsList
-      }
-
-      $.ajax({
-         url: API_ADDRESS + "/post/",
-         type: "POST",
-         headers: {"Authorization": localStorage.getItem(has_auth)},
-         dataType: "json",
-         data: JSON.stringify(newPostJson)
-      }).then(function(data, status, xhr) {
-         if (status == "success") {
-            $("#success").text(JSON.stringify(data));
-         }
-      }).catch(function(data) {
-         console.log(data);
-         $("#error").text(data.response);
-      });
-   }
-
-   // fields that can be updated
-   // title publish, draftmode, body, tags
-   function submitEditPost() {
-
+      console.log("I return true");
+      return true;
    }
 })();

@@ -13,11 +13,11 @@
       // // Authorized users can create/edit posts.
       if (localStorage.getItem(has_auth) != null) {
          let postButton = $("<div>", {
-            class: "left-pane-item",
-            id: "make_post"
+            "class": "nav-pane-item",
+            "id": "make_post"
          }).text("new post").click(function() {
             window.location = "webpages/newedit.html"
-         }).appendTo("#left-pane");
+         }).appendTo(".nav-pane");
       }
 
       $.ajax({
@@ -34,24 +34,24 @@
    function insertPosts(jsonData) {
       jsonData.forEach(function(singlePost) {
          let entry = $("<div>", {
-            class: "entry",
+            "class": "entry",
             id: singlePost.id
          }).click(function() {
             view(singlePost.id);
          });
-         $("<div.title>").text(singlePost.title).appendTo(entry);
-         $("<div.created>").text(singlePost.created).appendTo(entry);
-         $("<div.tags>").text(singlePost.tags).appendTo(entry);
+         $("<div>", {"class": "title"}).text(singlePost.title).appendTo(entry);
+         $("<div>", {"class": "created"}).text(moment(singlePost.created).fromNow()).appendTo(entry);
+         $("<div>", {"class": "tags"}).text(singlePost.tags).appendTo(entry);
          // admin only fields
          if (localStorage.getItem(has_auth)) {
-            $("<div.draftmode>").text(singlePost.draftmode).appendTo(entry);
+            $("<div>", {"class": "draftmode"}).text(singlePost.draftmode).appendTo(entry);
             //$("<div.views>").text(singlePost.views).appendTo(entry);
-            $("<div.publish>").text(singlePost.publish).appendTo(entry);
-            $("<div.edit>").text("edit").click(function() {
+            $("<div>", {"class": "publish"}).text(singlePost.publish).appendTo(entry);
+            $("<div>", {"class": "edit"}).text("edit").click(function() {
                edit(singlePost.id);
             }).appendTo(entry);
          }
-         $("#posts-pane").append(entry);
+         $("#posts-pane").prepend(entry);
       });
    }
 

@@ -32,13 +32,14 @@
 
    function load(jsonData) {
       let content = $("<div>", {
-         id: "frame"
+         "id": "frame"
       }).appendTo("#view-post");
-      $("<div.title>").text(jsonData.title).appendTo("#frame");
-      $("<div.author>").text(jsonData.author).appendTo("#frame");
-      $("<div.body>").html(jsonData.body).appendTo("#frame");
-      $("<div.tags>").text(jsonData.tags).appendTo("#frame");
-      $("<div.created>").text(jsonData.created).appendTo("#frame");
+      $("<div>", {"class": "title"}).text(jsonData.title).appendTo("#frame");
+      $("<div>", {"class": "author"}).text(jsonData.author).appendTo("#frame");
+      $("<div>", {"class": "body"}).html(jsonData.body).appendTo("#frame");
+      $("<div>", {"class": "tags"}).text(jsonData.tags).appendTo("#frame");
+      $("<div>", {"class": "created"}).text(jsonData.created).appendTo("#frame");
+      // add edited, published and so on alter
    }
 
 })();
