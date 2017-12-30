@@ -1,1 +1,4 @@
 node_modules/*
+build.sh
+deploy.sh
+default.conf
