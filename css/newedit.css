@@ -21,11 +21,37 @@ body {
    padding: 3px;
 }
 
-.title, .fa-area-chart {
+#heading-description, .fa-area-chart {
    display: inline;
    margin-left: 10px;
 }
 
 #title, #tags {
    display: block;
+}
+
+input, .ql-editor {
+   font-size: 24pt;
+}
+
+#datetime {
+   font-size: 16pt;
+}
+
+@media screen and (min-width: 780px) {
+   body {
+      font-size: 18pt;
+   }
+
+   .heading {
+      font-size: 18pt;
+   }
+
+   input, .ql-editor {
+      font-size: 14pt;
+   }
+
+   #datetime {
+      font-size: 14pt;
+   }
 }

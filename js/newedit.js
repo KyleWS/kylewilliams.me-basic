@@ -50,7 +50,12 @@
       $("<i>", {"class": "fa fa-area-chart"}).click(function() {
          window.location = "../main.html";
       }).appendTo(heading);
-      $("<div>", {"class": "title"}).text("test").appendTo(heading);
+      let headingDescription =  $("<div>", {"id": "heading-description"});
+      if (editing) {
+         headingDescription.text("Editing Post").appendTo(heading);
+      } else {
+         headingDescription.text("Write New Post").appendTo(heading);
+      }
    }
 
    function editFill(id) {
@@ -64,6 +69,7 @@
          $(".ql-editor").html(parsedJson.body);
          $("#tags").val(parsedJson.tags);
          $("#datetime").val(parsedJson.publish.substring(0, parsedJson.publish.length - 1));
+         $("#heading-description").text("Editing " + parsedJson.title);
       });
    }
 
