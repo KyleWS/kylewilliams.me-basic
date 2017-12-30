@@ -26,10 +26,10 @@
                   window.location = "../main.html";
                });
             }
-         }).appendTo("#delete-box");
-         $("<button>").text("edit post").click(function() {
+         }).appendTo("#admin-controls");
+         $("#admin-controls").prepend($("<div>", {"class": "edit"}).text("edit").click(function() {
             window.location = "./newedit.html";
-         }).appendTo($("#admin-controls"));
+         }));
       }
 
       $("home").click(function() {
@@ -41,11 +41,15 @@
       let content = $("<div>", {
          "id": "frame"
       }).appendTo("#view-post");
-      $("<div>", {"class": "title"}).text(jsonData.title).appendTo("#frame");
-      $("<div>", {"class": "author"}).text(jsonData.author).appendTo("#frame");
+      let heading = $("<div>", {"class": "heading"}).appendTo("#frame");
+      $("<i>", {"class": "fa fa-area-chart"}).click(function() {
+         window.location = "../main.html";
+      }).appendTo(heading);
+      $("<div>", {"class": "title"}).text(jsonData.title).appendTo(heading);
+      $("<div>", {"class": "tags"}).html("tags: <span id=\"tagSpan\">"+jsonData.tags+"</span>").appendTo("#frame");
       $("<div>", {"class": "body"}).html(jsonData.body).appendTo("#frame");
-      $("<div>", {"class": "tags"}).text(jsonData.tags).appendTo("#frame");
-      $("<div>", {"class": "created"}).text(jsonData.created).appendTo("#frame");
+      $("<div>", {"class": "author"}).text("By: " + jsonData.author).appendTo("#frame");
+      $("<div>", {"class": "created"}).text(moment(jsonData.created).format("MMM, DD YYYY")).appendTo("#frame");
       // add edited, published and so on alter
    }
 

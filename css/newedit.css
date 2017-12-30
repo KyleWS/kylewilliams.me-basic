@@ -9,3 +9,23 @@
    color: darkgreen;
    background-color: lightgreen;
 }
+
+body {
+   font-size: 24pt;
+   margin: 0;
+   padding: 0;
+}
+
+.heading {
+   background-color: #0cf;
+   padding: 3px;
+}
+
+.title, .fa-area-chart {
+   display: inline;
+   margin-left: 10px;
+}
+
+#title, #tags {
+   display: block;
+}

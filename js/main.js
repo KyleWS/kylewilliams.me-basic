@@ -10,6 +10,10 @@
          window.location = "webpages/login.html";
       });
 
+      $("#home").click(function() {
+         window.location = "./main.html"
+      })
+
       // // Authorized users can create/edit posts.
       if (localStorage.getItem(has_auth) != null) {
          let postButton = $("<div>", {
@@ -44,6 +48,9 @@
             "class": "entry",
             id: singlePost.id
          });
+         if (singlePost.draftmode) {
+            entry.addClass("draft");
+         }
          $("<div>", {"class": "title"}).text(singlePost.title).click(function() {
             view(singlePost.id);
          }).appendTo(entry);

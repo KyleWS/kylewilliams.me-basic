@@ -28,6 +28,9 @@
       // check if a post is supposed to be edited.
       if (post != null) {
          editFill(post);
+         makeHeader(true);
+      } else {
+         makeHeader(false);
       }
 
       $("#submit").click(function() {
@@ -40,6 +43,16 @@
    };
 
    // functions
+
+   function makeHeader(editing) {
+      let heading = $("<div>", {"class": "heading"});
+      $("body").prepend(heading);
+      $("<i>", {"class": "fa fa-area-chart"}).click(function() {
+         window.location = "../main.html";
+      }).appendTo(heading);
+      $("<div>", {"class": "title"}).text("test").appendTo(heading);
+   }
+
    function editFill(id) {
       $.ajax({
          url: API_ADDRESS + "/post/" + id,

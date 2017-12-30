@@ -9,3 +9,58 @@
 #delete:hover {
    background-color: grey;
 }
+
+body {
+   padding: 0px;
+   margin: 0px;
+   font-size: 16pt;
+   display: block;
+}
+
+.edit, #home {
+   border: 2px solid red;
+   border-radius: 20px;
+   padding: 10px;
+   display: inline-block;
+}
+
+.edit:hover, #home:hover {
+   background-color: grey;
+}
+
+.heading {
+   background-color: #0cf;
+   padding: 3px;
+}
+
+.title, .fa-area-chart {
+   display: inline;
+   margin-left: 10px;
+}
+
+.tags, .author, .created, #admin-controls {
+   margin-left: 10px;
+}
+
+#tagSpan {
+   color: darkorange;
+}
+
+.body {
+   padding: 10px;
+}
+
+.author, .created {
+   color: #996;
+   font-style: italic;
+}
+
+@media screen and (min-width: 780px) {
+   body {
+      font-size: 22pt;
+   }
+
+   .heading {
+      font-size: 24pt;
+   }
+}
